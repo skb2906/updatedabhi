@@ -1,0 +1,12 @@
+{
+  "rules": {
+    "config": {
+      ".read": true,
+      ".write": false
+    },
+    "rooms": {
+      ".read": true,
+      ".write": true
+    }
+  }
+}

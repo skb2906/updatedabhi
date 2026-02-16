@@ -1,0 +1,14 @@
+---------------------------------------------------
+🔍 Yaha Baat Karo - Diagnostic Tool
+---------------------------------------------------
+1. Checking Config...
+   Project ID: yaha-baat-karo
+   Database URL: https://yaha-baat-karo-default-rtdb.firebaseio.com
+
+2. Connecting to Firebase...
+   ✅ App Initialized
+
+3. Reading Password from Database...
+   ✅ SUCCESS! Found password: "jeetdalla"
+
+   🎉 Everything looks good! The app *should* work.

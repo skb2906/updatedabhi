@@ -1,0 +1,573 @@
+/* =========================================
+   YAHA BAAT KARO — DESIGN SYSTEM
+   Theme: Dark Glassmorphism + Neon Accents
+   ========================================= */
+
+@import url('https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700&display=swap');
+
+:root {
+    /* Colors */
+    --bg-dark: #0f0c29;
+    --bg-gradient: linear-gradient(135deg, #0f0c29, #302b63, #24243e);
+    --primary: #7b2cbf;
+    --accent: #e0aaff;
+    --text-main: #ffffff;
+    --text-muted: #bdbdbd;
+    --glass: rgba(255, 255, 255, 0.05);
+    --glass-border: rgba(255, 255, 255, 0.1);
+    --glass-hover: rgba(255, 255, 255, 0.1);
+    --success: #00ff88;
+    --error: #ff4d4d;
+
+    /* Spacing */
+    --space-xs: 0.5rem;
+    --space-sm: 1rem;
+    --space-md: 1.5rem;
+    --space-lg: 2rem;
+    --space-xl: 3rem;
+
+    /* Radius */
+    --radius-sm: 8px;
+    --radius-md: 16px;
+    --radius-lg: 24px;
+    --radius-full: 9999px;
+}
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: 'Outfit', sans-serif;
+    background: var(--bg-gradient);
+    color: var(--text-main);
+    min-height: 100vh;
+    overflow-x: hidden;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+/* Background Animation */
+body::before {
+    content: '';
+    position: fixed;
+    top: -50%;
+    left: -50%;
+    width: 200%;
+    height: 200%;
+    background: radial-gradient(circle, rgba(123, 44, 191, 0.15) 0%, transparent 60%),
+        radial-gradient(circle at 80% 20%, rgba(224, 170, 255, 0.1) 0%, transparent 40%);
+    animation: drift 20s infinite linear;
+    z-index: -1;
+    pointer-events: none;
+}
+
+@keyframes drift {
+    0% {
+        transform: rotate(0deg);
+    }
+
+    100% {
+        transform: rotate(360deg);
+    }
+}
+
+#app {
+    width: 100%;
+    max-width: 1200px;
+    padding: var(--space-md);
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+}
+
+/* =========================================
+   COMPONENTS
+   ========================================= */
+
+/* Glass Card */
+.glass-card {
+    background: var(--glass);
+    backdrop-filter: blur(16px);
+    -webkit-backdrop-filter: blur(16px);
+    border: 1px solid var(--glass-border);
+    border-radius: var(--radius-lg);
+    padding: var(--space-xl);
+    box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.3);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.glass-card:hover {
+    box-shadow: 0 12px 40px 0 rgba(0, 0, 0, 0.4);
+    border-color: rgba(255, 255, 255, 0.2);
+}
+
+/* Headings */
+h1,
+h2,
+h3 {
+    font-weight: 700;
+    line-height: 1.2;
+    margin-bottom: var(--space-sm);
+}
+
+h1 {
+    font-size: 3rem;
+    background: linear-gradient(to right, #fff, #e0aaff);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    text-shadow: 0 0 30px rgba(224, 170, 255, 0.3);
+}
+
+p {
+    color: var(--text-muted);
+    line-height: 1.6;
+    margin-bottom: var(--space-md);
+}
+
+/* Buttons */
+.btn {
+    background: var(--primary);
+    color: white;
+    border: none;
+    padding: 12px 24px;
+    border-radius: var(--radius-full);
+    font-family: inherit;
+    font-weight: 600;
+    font-size: 1rem;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    box-shadow: 0 4px 15px rgba(123, 44, 191, 0.4);
+}
+
+.btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 20px rgba(123, 44, 191, 0.6);
+    background: #9d4edd;
+}
+
+.btn:active {
+    transform: translateY(0);
+}
+
+.btn.secondary {
+    background: transparent;
+    border: 1px solid var(--glass-border);
+    box-shadow: none;
+}
+
+.btn.secondary:hover {
+    background: var(--glass-hover);
+    border-color: var(--text-muted);
+}
+
+.btn.danger {
+    background: rgba(255, 77, 77, 0.2);
+    color: #ff4d4d;
+    box-shadow: none;
+}
+
+.btn.danger:hover {
+    background: rgba(255, 77, 77, 0.4);
+}
+
+/* Inputs */
+input {
+    width: 100%;
+    padding: 14px 20px;
+    background: rgba(0, 0, 0, 0.3);
+    border: 1px solid var(--glass-border);
+    border-radius: var(--radius-md);
+    color: white;
+    font-family: inherit;
+    font-size: 1rem;
+    margin-bottom: var(--space-md);
+    transition: all 0.3s ease;
+}
+
+input:focus {
+    outline: none;
+    border-color: var(--accent);
+    box-shadow: 0 0 0 4px rgba(224, 170, 255, 0.1);
+    background: rgba(0, 0, 0, 0.5);
+}
+
+/* =========================================
+   PAGE SPECIFIC STYLES
+   ========================================= */
+
+/* Landing Page */
+.landing-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex: 1;
+    text-align: center;
+}
+
+.auth-box {
+    max-width: 400px;
+    width: 100%;
+}
+
+.logo-emoji {
+    font-size: 4rem;
+    margin-bottom: var(--space-sm);
+    display: inline-block;
+    animation: float 3s ease-in-out infinite;
+}
+
+@keyframes float {
+
+    0%,
+    100% {
+        transform: translateY(0);
+    }
+
+    50% {
+        transform: translateY(-10px);
+    }
+}
+
+/* Lobby Page */
+.lobby-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: var(--space-xl);
+}
+
+.rooms-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+    gap: var(--space-md);
+}
+
+.room-card {
+    background: rgba(255, 255, 255, 0.03);
+    border: 1px solid var(--glass-border);
+    border-radius: var(--radius-md);
+    padding: var(--space-md);
+    transition: all 0.3s ease;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    height: 200px;
+}
+
+.room-card:hover {
+    background: rgba(255, 255, 255, 0.08);
+    transform: translateY(-5px);
+    border-color: var(--accent);
+}
+
+.participant-count {
+    font-size: 0.9rem;
+    color: var(--text-muted);
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    margin-top: auto;
+    margin-bottom: var(--space-sm);
+}
+
+.empty-state {
+    grid-column: 1 / -1;
+    text-align: center;
+    padding: var(--space-xl);
+    opacity: 0.6;
+}
+
+/* Room Page */
+.room-layout {
+    display: flex;
+    flex-direction: column;
+    flex: 1;
+    gap: var(--space-md);
+}
+
+.room-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: var(--space-sm);
+    border-bottom: 1px solid var(--glass-border);
+}
+
+.participants-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+    gap: var(--space-md);
+    flex: 1;
+    overflow-y: auto;
+    padding: var(--space-sm);
+}
+
+.participant-tile {
+    background: rgba(0, 0, 0, 0.3);
+    border-radius: var(--radius-md);
+    aspect-ratio: 16/9;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+    overflow: hidden;
+    border: 2px solid transparent;
+    transition: all 0.3s ease;
+}
+
+.participant-tile.speaking {
+    border-color: var(--success);
+    box-shadow: 0 0 15px rgba(0, 255, 136, 0.3);
+}
+
+.avatar {
+    background: linear-gradient(135deg, var(--primary), #9d4edd);
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 1.5rem;
+    font-weight: 700;
+    margin-bottom: var(--space-sm);
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+}
+
+.participant-name {
+    font-weight: 600;
+}
+
+.mic-status {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    background: rgba(0, 0, 0, 0.6);
+    padding: 4px;
+    border-radius: 50%;
+    font-size: 0.8rem;
+}
+
+.controls-bar {
+    background: var(--glass);
+    backdrop-filter: blur(10px);
+    padding: var(--space-md);
+    border-radius: var(--radius-full);
+    display: flex;
+    justify-content: center;
+    gap: var(--space-md);
+    position: sticky;
+    bottom: 20px;
+    width: fit-content;
+    margin: 0 auto;
+    border: 1px solid var(--glass-border);
+}
+
+.control-btn {
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    border: none;
+    background: rgba(255, 255, 255, 0.1);
+    color: white;
+    font-size: 1.2rem;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.control-btn:hover {
+    background: rgba(255, 255, 255, 0.2);
+    transform: scale(1.1);
+}
+
+.control-btn.active {
+    background: var(--text-main);
+    color: var(--bg-dark);
+}
+
+.control-btn.end-call {
+    background: var(--error);
+}
+
+.control-btn.end-call:hover {
+    background: #ff3333;
+}
+
+/* Animations */
+.fade-in {
+    animation: fadeIn 0.5s ease-out forwards;
+    opacity: 0;
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(10px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.pulse {
+    animation: pulse 2s infinite;
+}
+
+@keyframes pulse {
+    0% {
+        transform: scale(1);
+    }
+
+    50% {
+        transform: scale(1.05);
+    }
+
+    100% {
+        transform: scale(1);
+    }
+}
+
+/* Mobile Responsiveness */
+@media (max-width: 768px) {
+    h1 {
+        font-size: 2rem;
+    }
+
+    .glass-card {
+        padding: var(--space-md);
+    }
+
+    .controls-bar {
+        width: 100%;
+        border-radius: var(--radius-md);
+    }
+
+    /* Mobile Responsiveness for Prank */
+    .prank-content h1 {
+        font-size: 2rem;
+    }
+
+    .prank-content h2 {
+        font-size: 1.5rem;
+    }
+
+    .prank-emoji {
+        font-size: 4rem;
+    }
+}
+
+/* =========================================
+ PERMANENT ROOMS & ANIMATIONS
+ ========================================= */
+
+/* OYO Room */
+.room-card.oyo-room {
+    background: linear-gradient(135deg, rgba(255, 71, 87, 0.1), rgba(255, 107, 129, 0.1));
+    border-color: rgba(255, 71, 87, 0.3);
+}
+
+.room-card.oyo-room:hover {
+    box-shadow: 0 10px 30px rgba(255, 71, 87, 0.2);
+    border-color: #ff4757;
+}
+
+/* Gaali Room */
+.room-card.gaali-room {
+    background: linear-gradient(135deg, rgba(47, 53, 66, 0.4), rgba(0, 0, 0, 0.6));
+    border-color: rgba(255, 255, 255, 0.1);
+}
+
+.room-card.gaali-room:hover {
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+    border-color: #ff6b6b;
+}
+
+/* Prank Overlay */
+.prank-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background: rgba(0, 0, 0, 0.9);
+    backdrop-filter: blur(10px);
+    z-index: 9999;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    animation: fadeIn 0.3s ease-out;
+}
+
+.prank-content {
+    animation: shake 0.5s cubic-bezier(.36, .07, .19, .97) both infinite;
+    transform: translate3d(0, 0, 0);
+    padding: 2rem;
+}
+
+.prank-emoji {
+    font-size: 6rem;
+    margin-bottom: 20px;
+}
+
+.prank-content h1 {
+    font-size: 3.5rem;
+    color: #ff4757;
+    margin-bottom: 10px;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+}
+
+.prank-content h2 {
+    font-size: 2.5rem;
+    color: #fff;
+    margin-bottom: 20px;
+}
+
+.prank-content p {
+    font-size: 1.5rem;
+    color: #a4b0be;
+}
+
+.fade-out {
+    opacity: 0;
+    transition: opacity 0.5s ease-out;
+}
+
+@keyframes shake {
+
+    10%,
+    90% {
+        transform: translate3d(-1px, 0, 0);
+    }
+
+    20%,
+    80% {
+        transform: translate3d(2px, 0, 0);
+    }
+
+    30%,
+    50%,
+    70% {
+        transform: translate3d(-4px, 0, 0);
+    }
+
+    40%,
+    60% {
+        transform: translate3d(4px, 0, 0);
+    }
+}

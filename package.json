@@ -1,0 +1,18 @@
+{
+  "name": "yaha-baat-karo",
+  "private": true,
+  "version": "1.0.0",
+  "type": "module",
+  "scripts": {
+    "dev": "vite",
+    "build": "vite build",
+    "preview": "vite preview"
+  },
+  "dependencies": {
+    "dotenv": "^17.3.1",
+    "firebase": "^12.9.0",
+    "livekit-client": "^2.17.1",
+    "livekit-server-sdk": "^2.15.0",
+    "vite": "^7.3.1"
+  }
+}
