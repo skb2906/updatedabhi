@@ -22,8 +22,33 @@ const firebaseConfig = {
 };
 
 // Initialize Firebase
-const app = initializeApp(firebaseConfig);
-const database = getDatabase(app);
+let app;
+let database;
+
+try {
+    // Check if critical config is missing
+    const missingKeys = Object.keys(firebaseConfig).filter(key => !firebaseConfig[key]);
+    if (missingKeys.length > 0) {
+        throw new Error(`Missing Firebase config keys: ${missingKeys.join(', ')}`);
+    }
+
+    app = initializeApp(firebaseConfig);
+    database = getDatabase(app);
+    console.log('✅ Firebase initialized successfully');
+} catch (error) {
+    console.error('❌ Firebase Initialization Error:', error);
+    // Fallback: create a dummy database object to prevent immediate crash on import
+    database = {
+        ref: () => { },
+        set: () => Promise.reject('Firebase not initialized'),
+        get: () => Promise.reject('Firebase not initialized'),
+        push: () => { },
+        onValue: () => { },
+        remove: () => Promise.reject('Firebase not initialized'),
+        update: () => Promise.reject('Firebase not initialized')
+    };
+}
 
 // Export everything we need
-export { database, ref, set, get, push, onValue, remove, update };
+import { runTransaction } from 'firebase/database';
+export { database, ref, set, get, push, onValue, remove, update, runTransaction };

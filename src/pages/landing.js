@@ -26,7 +26,7 @@ export function renderLanding(onLoginSuccess) {
             <p>Private Group Voice Chat</p>
             
             <form id="login-form">
-                <input type="password" id="password-input" placeholder="Enter Password" required />
+                <input type="password" id="password-input" placeholder="Enter Password" required>
                 <button type="submit" class="btn">Enter App</button>
             </form>
             <p id="error-msg" style="color: var(--error); display: none; margin-top: 10px;"></p>
